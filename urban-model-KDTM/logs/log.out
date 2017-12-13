@@ -1,0 +1,23 @@
+Waf: Entering directory `/home/ubuntu/Documents/Ns3-workspace/ns-allinone-3.26/ns-3.26/build'
+[ 952/2496] Compiling scratch/urban-model/urban_main.cc
+../scratch/urban-model/urban_main.cc: In function ‘void GenerateHelloMessage(ns3::Ptr<ns3::Socket>, uint32_t, ns3::Time, std::string, ns3::Ptr<const ns3::MobilityModel>)’:
+../scratch/urban-model/urban_main.cc:157:90: error: expected ‘)’ before ‘context’
+    Simulator::ScheduleWithContext (context, helloInterval, &GenerateHelloMessage, socket context, helloInterval, "", mobility); 
+                                                                                          ^
+In file included from ./ns3/simulator.h:26:0,
+                 from ./ns3/event-garbage-collector.h:25,
+                 from ./ns3/core-module.h:30,
+                 from ../scratch/urban-model/urban_main.cc:17:
+./ns3/make-event.h: In instantiation of ‘void ns3::MakeEvent(MEM, OBJ, T1, T2, T3)::EventMemberImpl3::Notify() [with MEM = void (*)(ns3::Ptr<ns3::Socket>, unsigned int, ns3::Time, std::basic_string<char>, ns3::Ptr<const ns3::MobilityModel>); OBJ = ns3::Ptr<ns3::Socket>; T1 = ns3::Time; T2 = const char*; T3 = ns3::Ptr<const ns3::MobilityModel>]’:
+./ns3/make-event.h:424:3:   required from ‘ns3::EventImpl* ns3::MakeEvent(MEM, OBJ, T1, T2, T3) [with MEM = void (*)(ns3::Ptr<ns3::Socket>, unsigned int, ns3::Time, std::basic_string<char>, ns3::Ptr<const ns3::MobilityModel>); OBJ = ns3::Ptr<ns3::Socket>; T1 = ns3::Time; T2 = const char*; T3 = ns3::Ptr<const ns3::MobilityModel>]’
+./ns3/simulator.h:1343:82:   required from ‘static void ns3::Simulator::ScheduleWithContext(uint32_t, const ns3::Time&, MEM, OBJ, T1, T2, T3) [with MEM = void (*)(ns3::Ptr<ns3::Socket>, unsigned int, ns3::Time, std::basic_string<char>, ns3::Ptr<const ns3::MobilityModel>); OBJ = ns3::Ptr<ns3::Socket>; T1 = ns3::Time; T2 = const char*; T3 = ns3::Ptr<const ns3::MobilityModel>; uint32_t = unsigned int]’
+../scratch/urban-model/urban_main.cc:157:126:   required from here
+./ns3/make-event.h:417:59: error: ‘((ns3::MakeEvent(MEM, OBJ, T1, T2, T3) [with MEM = void (*)(ns3::Ptr<ns3::Socket>, unsigned int, ns3::Time, std::basic_string<char>, ns3::Ptr<const ns3::MobilityModel>); OBJ = ns3::Ptr<ns3::Socket>; T1 = ns3::Time; T2 = const char*; T3 = ns3::Ptr<const ns3::MobilityModel>]::EventMemberImpl3*)this)->ns3::MakeEvent(MEM, OBJ, T1, T2, T3) [with MEM = void (*)(ns3::Ptr<ns3::Socket>, unsigned int, ns3::Time, std::basic_string<char>, ns3::Ptr<const ns3::MobilityModel>); OBJ = ns3::Ptr<ns3::Socket>; T1 = ns3::Time; T2 = const char*; T3 = ns3::Ptr<const ns3::MobilityModel>]::EventMemberImpl3::m_function’ cannot be used as a member pointer, since it is of type ‘void (*)(ns3::Ptr<ns3::Socket>, unsigned int, ns3::Time, std::basic_string<char>, ns3::Ptr<const ns3::MobilityModel>)’
+       (EventMemberImplObjTraits<OBJ>::GetReference (m_obj).*m_function)(m_a1, m_a2, m_a3);
+                                                           ^
+
+Waf: Leaving directory `/home/ubuntu/Documents/Ns3-workspace/ns-allinone-3.26/ns-3.26/build'
+Build failed
+ -> task in 'urban-model' failed (exit status 1): 
+	{task 139939127038544: cxx urban_main.cc -> urban_main.cc.1.o}
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-pthread', '-I.', '-I..', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../scratch/urban-model/urban_main.cc', '-c', '-o', '/home/ubuntu/Documents/Ns3-workspace/ns-allinone-3.26/ns-3.26/build/scratch/urban-model/urban_main.cc.1.o']

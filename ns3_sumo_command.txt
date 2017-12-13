@@ -1,0 +1,45 @@
+
+// create map from edge and nodes
+netconvert -n example.nod.xml -e example.edg.xml -o example.net.xml
+
+// visualize map
+sumo-gui -n example.net.xml
+
+// create car movment from map and flow
+duarouter -n example.net.xml -f flow.xml -o example.rou.xml
+
+// vizualize simulation 
+sumo-gui -n example.net.xml -r example.rou.xml
+
+// add dump file for movment trace
+sumo -n example.net.xml -r example.rou.xml --netstate-dump netsate.xml
+
+// generate fcd output during generation
+sumo -n example.net.xml -r example.rou.xml --fcd-output urban.config.fcd
+
+// sumo generate random trip
+http://sumo.dlr.de/wiki/Tools/Trip/randomTrips.py
+
+
+// Use traceExporter to generate ns2 output
+/usr/share/sumo/tools/bin/traceExporter.py --fcd-input ../sumo-mobility-model/urban.conf.fcd --ns2config-output urban.config.tcl --ns2activity-output urban.activity.tcl --ns2mobility-output urban.mobility.tcl
+
+
+// run log with ns3
+./waf --run scratch/urban-model > log.out 2>&1
+
+// run with debug mode
+NS_LOG="UrbanModelScript" ./waf --run urban-model
+
+// run with parameters
+./waf --run "urban-model --traceFile=scratch/urban-model/ns2-mobility-model/urban.mobility.tcl --logFile=scratch/urban-model/logs/ns2-mobility-trace.txt --nodeNum=30 --duration=90.0"
+
+// run final simulation
+NS_LOG="UrbanModelScript" ./waf --run "urban-model-KDTM --i=./urban_env/ns2mobility/urban-100.tcl --n=100"
+
+
+
+// Download E-GPSR protocol
+http://www.mehic.info/2016/04/greedy-perimeter-stateless-routing-gpsr-in-ns3-25/
+
+
